@@ -8,6 +8,6 @@ export interface Usuario {
   telefone:string,
   genero:string,
   foto:string,
-  pasword:string
+  password:string
   isActivo: number
 }

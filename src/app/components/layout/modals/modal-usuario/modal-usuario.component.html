@@ -1,0 +1,97 @@
+<h2 mat-dialog-title>{{tituloAccao}}</h2>
+
+<mat-dialog-content>
+  <form [formGroup] = "formularioUsuario">
+    <mat-grid-list cols="1" rowHeight="90px">
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input matInput autocomplete="off" formControlName="nome">
+          <mat-icon matSuffix>account_box</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Sobrenome</mat-label>
+          <input matInput autocomplete="off" formControlName="sobrenome">
+          <mat-icon matSuffix>account_box</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Gênero</mat-label>
+          <mat-select formControlName="genero">
+            <mat-option value="Masculino">Masculino</mat-option>
+            <mat-option value="Femenino">Femenino</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Telefone</mat-label>
+          <input matInput autocomplete="off" formControlName="telefone">
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput autocomplete="off" formControlName="email">
+          <mat-icon matSuffix>amail</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Rol</mat-label>
+          <mat-select formControlName="idRol">
+            <mat-option *ngFor="let rol of listaRol" [value]="rol.idRol">
+              {{rol.nome}}
+            </mat-option>
+
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Palavra Passe</mat-label>
+          <input matInput [type]="ocultarPassword ?'password': 'text'" formControlName="password">
+          <button mat-icon-button matSuffix (click)="ocultarPassword = !ocultarPassword" type="button">
+            <mat-icon matSuffix>{{ocultarPassword ? 'visibility_of': 'visibility'}}</mat-icon>
+          </button>
+
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Estado</mat-label>
+          <mat-select formControlName="isActivo">
+            <mat-option value="1">Activo</mat-option>
+            <mat-option value="0">Não Activo</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Foto</mat-label>
+          <input matInput autocomplete="off" formControlName="foto">
+          <mat-icon matSuffix>photo</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close color="warn">Voltar</button>
+  <button mat-raised-button color="primary" [disabled]="formularioUsuario.invalid" (click)="guardarEditar_Usuario()">{{botaoAcao}}</button>
+</mat-dialog-actions>
+

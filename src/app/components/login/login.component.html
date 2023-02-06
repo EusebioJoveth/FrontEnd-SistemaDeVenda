@@ -2,7 +2,7 @@
   <mat-card class="loginCard">
 
     <div class="header">
-      <h2>Login</h2>
+      <h2>Login - Sistema de Venda JT</h2>
     </div>
 
     <mat-card-content style="padding-bottom: 15px">
@@ -17,7 +17,7 @@
           <mat-label>Password</mat-label>
           <input [type]="ocultarPassword?'password': 'text'" formControlName="password" matInput autocomplete="off">
           <button mat-icon-button matSuffix (click)="ocultarPassword =!ocultarPassword" type="button">
-            <mat-icon matSuffix>{{ocultarPassword ? 'visibility_of' : 'Visi'}}</mat-icon>
+            <mat-icon matSuffix>{{ocultarPassword ? 'visibility_of' : 'visibility'}}</mat-icon>
           </button>
 
         </mat-form-field>
