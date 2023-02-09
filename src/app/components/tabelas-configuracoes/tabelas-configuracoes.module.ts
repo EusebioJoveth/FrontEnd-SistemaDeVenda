@@ -7,6 +7,9 @@ import { CategoriaComponent } from './categoria/categoria.component';
 import { MarcaComponent } from './marca/marca.component';
 import { ImpostoComponent } from './imposto/imposto.component';
 import { SharedModule } from 'src/app/Reutilizavel/shared/shared.module';
+import { ModalCategoriaComponent } from './modals/modal-categoria/modal-categoria.component';
+import { ModalMarcaComponent } from './modals/modal-marca/modal-marca.component';
+import { ModalImpostoComponent } from './modals/modal-imposto/modal-imposto.component';
 
 
 @NgModule({
@@ -15,6 +18,9 @@ import { SharedModule } from 'src/app/Reutilizavel/shared/shared.module';
     CategoriaComponent,
     MarcaComponent,
     ImpostoComponent,
+    ModalCategoriaComponent,
+    ModalMarcaComponent,
+    ModalImpostoComponent,
   ],
   imports: [
     CommonModule,
