@@ -1,83 +1,101 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+
+import { ModalCategoriaComponent } from '../modals/modal-categoria/modal-categoria.component';
 import { Categoria } from 'src/app/Interfaces/categoria';
 import { CategoriaService } from 'src/app/Services/categoria.service';
 import { UtilidadeService } from 'src/app/Reutilizavel/utilidade.service';
-import { ModalCategoriaComponent } from '../modals/modal-categoria/modal-categoria.component';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-categoria',
   templateUrl: './categoria.component.html',
   styleUrls: ['./categoria.component.scss']
 })
-export class CategoriaComponent implements OnInit {
+export class CategoriaComponent implements OnInit, AfterViewInit {
 
-  formularioCategoria: FormGroup;
-  tituloAcao: string = "Adicionar";
-  botaoAcao: string = "Gravar";
+  colunasTabela: string[] = ['nome', 'descricao', 'estado', 'acoes'];
+  dataCategoria: Categoria[] = [];
+  dataListaCategoria = new MatTableDataSource(this.dataCategoria);
+  @ViewChild(MatPaginator)paginacaoTabela!: MatPaginator;
 
   constructor(
-    private modalActual: MatDialogRef<ModalCategoriaComponent>,
-    @Inject(MAT_DIALOG_DATA) public dadosCategoria: Categoria,
-    private _formBuilder: FormBuilder, private _categoriaService: CategoriaService,
+    private dialog: MatDialog, private _categoriaService: CategoriaService,
     private _utilidadeService: UtilidadeService
-  ) {
-    this.formularioCategoria = this._formBuilder.group({
-      nome: ['', Validators.required],
-      descricao:['',],
-      isActivo:['1',]
-    });
 
-    if(this.dadosCategoria !=null){
-      this.tituloAcao = "Editar";
-      this.botaoAcao = "Actualizar";
-    }
+  ) {
+
+  }
+
+  obterCategorias(){
+    this._categoriaService.lista().subscribe({
+      next:(data) =>{
+        if(data.status) this.dataListaCategoria.data = data.valor;
+        else
+        this._utilidadeService.mostrarAlerta("Não existem dados", "Ops!")
+      },
+      error:(err)=>{}
+    })
   }
 
   ngOnInit(): void {
-    if(this.dadosCategoria != null){
-      this.formularioCategoria.patchValue({
-        nome: this.dadosCategoria.nome,
-        descricao: this.dadosCategoria.descricao,
-        isActivo: this.dadosCategoria.isActivo.toString()
-      });
-    }
+    this.obterCategorias();
   }
 
-  gravarOuEditarCategoria(){
-    const _categoria: Categoria = {
-      idCategoria: this.dadosCategoria == null ? 0 : this.dadosCategoria.idCategoria,
-      nome: this.formularioCategoria.value.nome,
-      descricao: this.formularioCategoria.value.descricao,
-      isActivo: parseInt (this.formularioCategoria.value.isActivo)
-    }
+  ngAfterViewInit(): void {
+      this.dataListaCategoria.paginator = this.paginacaoTabela;
+  }
 
-    if(this.dadosCategoria == null){
-      this._categoriaService.criar(_categoria).subscribe({
-        next:(dado) =>{
-          if(dado.status){
-            this._utilidadeService.mostrarAlerta("Categoria Registada com Sucesso", "Exito");
-            this.modalActual.close("true")
-          }else
-          this._utilidadeService.mostrarAlerta("Não é possível Registar Categoria", "Erro");
-        },
-        error: (err) => {}
-      });
-    }else{
-      this._categoriaService.editar(_categoria).subscribe({
-        next:(dado) =>{
-          if(dado.status){
-            this._utilidadeService.mostrarAlerta("Categoria Actualizada com Sucesso", "Exito");
-            this.modalActual.close("true")
-          }else
-          this._utilidadeService.mostrarAlerta("Não é possível Actualizar Categoria", "Erro");
-        },
-        error: (err) => {}
-      });
+  aplicarFiltroTabela(event: Event){
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataListaCategoria.filter = filterValue.trim().toLowerCase();
+  }
 
-    }
+  novaCategoria(){
+    this.dialog.open(ModalCategoriaComponent, {
+      disableClose:true
+    }).afterClosed().subscribe(resultado => {
+      if(resultado === "true") this.obterCategorias();
+    });
+  }
 
+  editarCategoria(categoria:Categoria){
+    this.dialog.open(ModalCategoriaComponent, {
+      disableClose: true,
+      data: categoria
+    }).afterClosed().subscribe(resultado =>{
+      if(resultado === "true") this.obterCategorias();
+    });
+  }
+
+  eliminarCategoria(categoria:Categoria){
+    Swal.fire({
+      title: "Deseja Eliminar Categoria?",
+      text: categoria.nome,
+      icon: "warning",
+      confirmButtonColor: "#3085d6",
+      confirmButtonText: "Sim, eliminar",
+      showCancelButton: true,
+      cancelButtonColor: "#d33",
+      cancelButtonText: "Não, cancelar"
+    }).then((resultado) =>{
+      if(resultado.isConfirmed){
+        this._categoriaService.eliminar(categoria.idCategoria).subscribe({
+          next:(data) =>{
+            if(data.status){
+              this._utilidadeService.mostrarAlerta("Categoria Eliminada", "Eliminada");
+              this.obterCategorias();
+            }else
+              this._utilidadeService.mostrarAlerta("Não é possível elininar", "Erro!");
+          },
+          error: (err) => {}
+        });
+      }
+    });
   }
 
 }

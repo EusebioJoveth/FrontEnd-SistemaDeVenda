@@ -13,7 +13,7 @@ export class UtilidadeService {
     this._snackBar.open(mensagem, tipo, {
       horizontalPosition: "end",
       verticalPosition: "top",
-      duration: 300
+      duration: 3000
     });
   }
 
