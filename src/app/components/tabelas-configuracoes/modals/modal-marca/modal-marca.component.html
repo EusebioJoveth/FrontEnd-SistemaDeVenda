@@ -1,1 +1,45 @@
-<p>modal-marca works!</p>
+<h2 mat-dialog-title>{{tituloAcao}} Marca</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="formMarca">
+    <mat-grid-list cols="1" rowHeight="80px">
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input matInput  autocomplete="off" formControlName="nome">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Descrição</mat-label>
+          <textarea matInput formControlName="descricao"
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5">
+          </textarea>
+        </mat-form-field>
+
+      </mat-grid-tile>
+
+       <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Estado</mat-label>
+          <mat-select formControlName="isActivo">
+            <mat-option value="1">Activo</mat-option>
+            <mat-option value="0">Não Activo</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close color="warn">Cancelar</button>
+  <button mat-raised-button color="primary" [disabled]="formMarca.invalid"
+   (click)="gravarOuEditarMarca()">{{botaoAcao}}</button>
+</mat-dialog-actions>
+

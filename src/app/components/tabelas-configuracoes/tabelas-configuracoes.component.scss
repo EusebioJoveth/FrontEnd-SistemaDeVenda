@@ -1,0 +1,21 @@
+.mat-card-config{
+  margin:10px 30px 30px 30px;
+  display: flex;
+  justify-content: space-between;
+  height: 78vh;
+
+  .first-linha{
+    display: flex;
+    flex-wrap: wrap;
+    a{
+      margin: 8px;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: rgb(13, 45, 121);
+      font-size: 15px;
+    }
+
+  }
+
+}

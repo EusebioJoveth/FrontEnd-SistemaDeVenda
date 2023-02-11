@@ -1,6 +1,6 @@
 export interface Imposto {
   idImposto:number,
   nome: string,
-  taxa:number,
+  taxa:string,
   descricao:string
 }

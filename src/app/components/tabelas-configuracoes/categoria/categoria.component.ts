@@ -8,7 +8,9 @@ import { ModalCategoriaComponent } from '../modals/modal-categoria/modal-categor
 import { Categoria } from 'src/app/Interfaces/categoria';
 import { CategoriaService } from 'src/app/Services/categoria.service';
 import { UtilidadeService } from 'src/app/Reutilizavel/utilidade.service';
-import Swal from 'sweetalert2';
+import  Swal from 'sweetalert2';
+
+import {MenuItem} from 'primeng/api';
 
 
 @Component({
@@ -17,6 +19,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./categoria.component.scss']
 })
 export class CategoriaComponent implements OnInit, AfterViewInit {
+
+  itemsBreadCrumb: MenuItem[];
+  home: MenuItem;
 
   colunasTabela: string[] = ['nome', 'descricao', 'estado', 'acoes'];
   dataCategoria: Categoria[] = [];
@@ -28,6 +33,13 @@ export class CategoriaComponent implements OnInit, AfterViewInit {
     private _utilidadeService: UtilidadeService
 
   ) {
+    this.itemsBreadCrumb = [
+      {label: 'Páginas'},
+      {label: 'Configurações'},
+      {label: 'Categorias'},
+  ];
+
+  this.home = {icon: 'pi pi-cog', routerLink: '/pages/configuracoes'};
 
   }
 

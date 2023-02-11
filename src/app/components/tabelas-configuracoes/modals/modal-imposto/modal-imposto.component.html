@@ -1,1 +1,42 @@
-<p>modal-imposto works!</p>
+<h2 mat-dialog-title>{{tituloAcao}} Imposto</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="formImposto">
+    <mat-grid-list cols="1" rowHeight="80px">
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input matInput  autocomplete="off" formControlName="nome">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Taxa</mat-label>
+          <input matInput type="number"  autocomplete="off" formControlName="taxa">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Descrição</mat-label>
+          <textarea matInput formControlName="descricao"
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5">
+          </textarea>
+        </mat-form-field>
+
+      </mat-grid-tile>
+
+    </mat-grid-list>
+  </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close color="warn">Cancelar</button>
+  <button mat-raised-button color="primary" [disabled]="formImposto.invalid"
+   (click)="gravarOuEditarImposto()">{{botaoAcao}}</button>
+</mat-dialog-actions>
+

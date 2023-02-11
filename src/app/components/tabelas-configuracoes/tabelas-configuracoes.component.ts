@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import {MenuItem} from 'primeng/api';
+
 @Component({
   selector: 'app-tabelas-configuracoes',
   templateUrl: './tabelas-configuracoes.component.html',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabelasConfiguracoesComponent implements OnInit {
 
-  constructor() { }
+  itemsBreadCrumb: MenuItem[];
+  home: MenuItem;
+
+  constructor() {
+    this.itemsBreadCrumb = [
+      {label: 'Páginas'},
+      {label: 'Configurações'},
+  ];
+
+  this.home = {icon: 'pi pi-cog', routerLink: '/pages/configuracoes'};
+  }
 
   ngOnInit(): void {
+
   }
 
 }

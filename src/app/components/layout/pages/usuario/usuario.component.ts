@@ -10,6 +10,8 @@ import { UsuarioService } from 'src/app/Services/usuario.service';
 import { UtilidadeService } from 'src/app/Reutilizavel/utilidade.service';
 import Swal from 'sweetalert2';
 
+import {MenuItem} from 'primeng/api';
+
 
 @Component({
   selector: 'app-usuario',
@@ -17,6 +19,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./usuario.component.scss']
 })
 export class UsuarioComponent implements OnInit, AfterViewInit {
+
+  itemsBreadCrumb: MenuItem[];
+  home: MenuItem;
 
   colunasTabela:string[] = ['foto','nome', 'sobrenome', 'email', 'telefone', 'genero', 'rolDescricao', 'estado', 'acoes'];
   dataSource:Usuario[] = [];
@@ -27,7 +32,14 @@ export class UsuarioComponent implements OnInit, AfterViewInit {
     private dialog: MatDialog, private _usuarioService: UsuarioService,
     private _utilidadeService: UtilidadeService
 
-  ) { }
+  ) {
+    this.itemsBreadCrumb = [
+      {label: 'Páginas'},
+      {label: 'Usuários'},
+  ];
+
+  this.home = {icon: 'pi pi-user', routerLink: '/pages/usuarios'};
+   }
 
   obterUsuarios(){
     this._usuarioService.lista().subscribe({
