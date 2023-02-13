@@ -1,6 +1,7 @@
 export interface Produto {
   idProduto:number,
   nome:string,
+  codigo:string,
   idCategoria:number,
   descricaoCategoria:string,
   idMarca:number,
@@ -8,7 +9,7 @@ export interface Produto {
   idImposto:number,
   descricaoImposto:string,
   stock:number,
-  preco:number,
-  isActico:number,
+  preco:string,
+  isActivo:number,
   foto:string
 }

@@ -1,70 +1,69 @@
-<h2 mat-dialog-title>{{tituloAccao}} Utilizador</h2>
+<h2 mat-dialog-title>{{tituloAccao}} Produto</h2>
 
 <mat-dialog-content>
-  <form [formGroup] = "formularioUsuario">
+  <form [formGroup] = "formProduto">
     <mat-grid-list cols="1" rowHeight="90px">
       <mat-grid-tile>
         <mat-form-field appearance="outline">
           <mat-label>Nome</mat-label>
           <input matInput autocomplete="off" formControlName="nome">
-          <mat-icon matSuffix>account_box</mat-icon>
+          <mat-icon matSuffix>fit_sreen</mat-icon>
         </mat-form-field>
       </mat-grid-tile>
 
       <mat-grid-tile>
         <mat-form-field appearance="outline">
-          <mat-label>Sobrenome</mat-label>
-          <input matInput autocomplete="off" formControlName="sobrenome">
-          <mat-icon matSuffix>account_box</mat-icon>
+          <mat-label>Código</mat-label>
+          <input matInput autocomplete="off" formControlName="codigo">
         </mat-form-field>
       </mat-grid-tile>
 
       <mat-grid-tile>
         <mat-form-field appearance="outline">
-          <mat-label>Gênero</mat-label>
-          <mat-select formControlName="genero">
-            <mat-option value="Masculino">Masculino</mat-option>
-            <mat-option value="Femenino">Femenino</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-        <mat-form-field appearance="outline">
-          <mat-label>Telefone</mat-label>
-          <input matInput autocomplete="off" formControlName="telefone">
-          <mat-icon matSuffix>phone</mat-icon>
-        </mat-form-field>
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-        <mat-form-field appearance="outline">
-          <mat-label>Email</mat-label>
-          <input matInput autocomplete="off" formControlName="email">
-          <mat-icon matSuffix>amail</mat-icon>
-        </mat-form-field>
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-        <mat-form-field appearance="outline">
-          <mat-label>Rol</mat-label>
-          <mat-select formControlName="idRol">
-            <mat-option *ngFor="let rol of listaRol" [value]="rol.idRol">
-              {{rol.nome}}
+          <mat-label>Categoria</mat-label>
+          <mat-select formControlName="idCategoria">
+            <mat-option *ngFor="let cat of listaCategoria" [value]="cat.idCategoria">
+              {{cat.nome}}
             </mat-option>
-
           </mat-select>
         </mat-form-field>
       </mat-grid-tile>
 
       <mat-grid-tile>
         <mat-form-field appearance="outline">
-          <mat-label>Palavra Passe</mat-label>
-          <input matInput [type]="ocultarPassword ?'password': 'text'" formControlName="password">
-          <button mat-icon-button matSuffix (click)="ocultarPassword = !ocultarPassword" type="button">
-            <mat-icon matSuffix>{{ocultarPassword ? 'visibility_of': 'visibility'}}</mat-icon>
-          </button>
+          <mat-label>Marca</mat-label>
+          <mat-select formControlName="idMarca">
+            <mat-option *ngFor="let marc of listaMarca" [value]="marc.idMarca">
+              {{marc.nome}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
 
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Imposto</mat-label>
+          <mat-select formControlName="idImposto">
+            <mat-option *ngFor="let imp of listaImposto" [value]="imp.idImposto">
+              {{imp.nome}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Stock</mat-label>
+          <input matInput autocomplete="off" formControlName="stock" type="number">
+          <mat-icon matSuffix>edit_square</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Preço</mat-label>
+          <input matInput autocomplete="off" formControlName="preco">
+          <mat-icon matSuffix>attach_money</mat-icon>
         </mat-form-field>
       </mat-grid-tile>
 
@@ -92,6 +91,6 @@
 
 <mat-dialog-actions align="end">
   <button mat-raised-button mat-dialog-close color="warn">Cancelar</button>
-  <button mat-raised-button color="primary" [disabled]="formularioUsuario.invalid" (click)="guardarEditar_Usuario()">{{botaoAcao}}</button>
+  <button mat-raised-button color="primary" [disabled]="formProduto.invalid" (click)="guardarEditar_Produto()">{{botaoAcao}}</button>
 </mat-dialog-actions>
 
