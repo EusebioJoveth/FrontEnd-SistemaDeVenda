@@ -53,7 +53,7 @@ export class VendaComponent implements OnInit {
       {label: 'Vendas'},
   ];
 
-  this.home = {icon: 'pi pi-shopping-bag', routerLink: '/pages/usuarios'};
+  this.home = {icon: 'pi pi-shopping-bag', routerLink: '/pages/vendas'};
 
     this.formProdutoVenda = this._formBuilder.group({
       produto: ["", Validators.required],
@@ -95,16 +95,16 @@ export class VendaComponent implements OnInit {
     const _quantidade: number = this.formProdutoVenda.value.quantidade;
     const _desconto: number = this.formProdutoVenda.value.desconto / 100;
     const _preco: number = parseFloat(this.produtoSelecionado.preco);
-    const _total: number = (_quantidade * _preco) - ((_quantidade * _preco) * _desconto)
+    const _total: number = this.calcularTotal(_quantidade, _preco, _desconto);
     this.totalPagar = this.totalPagar + _total;
 
     this.listaProdutosParaVenda.push({
       idProduto: this.produtoSelecionado.idProduto,
       descricaoProduto: this.produtoSelecionado.nome,
       quantidade: _quantidade,
-      preco: String(_preco.toFixed(2)),
-      desconto: `${_desconto} %`,
-      total: String(_total.toFixed(2))
+      precoTexto: String(_preco.toFixed(2)),
+      desconto: `${_desconto * 100}`,
+      totalTexto: String(_total.toFixed(2))
     });
 
     this.dadosDetalheVenda = new MatTableDataSource(this.listaProdutosParaVenda);
@@ -114,10 +114,12 @@ export class VendaComponent implements OnInit {
       quantidade: '',
       desconto: 0
     });
+
+    this.dadosDetalheVenda.paginator = this.paginacaoTabela;
   }
 
   eliminarProduto(detalhe: DetalheVenda){
-    this.totalPagar = this.totalPagar - parseFloat(detalhe.total);
+    this.totalPagar = this.totalPagar - parseFloat(detalhe.totalTexto);
     this.listaProdutosParaVenda = this.listaProdutosParaVenda.filter(produt => produt.idProduto != detalhe.idProduto);
 
     this.dadosDetalheVenda = new MatTableDataSource(this.listaProdutosParaVenda);
@@ -126,15 +128,19 @@ export class VendaComponent implements OnInit {
   registarVenda(){
     if(this.listaProdutosParaVenda.length > 0){
       this.bloquerBotaoRegistar = true;
+      console.log('totalA Pagar', this.totalPagar)
 
       const request: Venda = {
         tipoPagamento: this.tipoPagamentoPorDefeito,
-        total: String(this.totalPagar.toFixed(2)),
+        totalTexto: String(this.totalPagar.toFixed(2)),
         detalheVenda: this.listaProdutosParaVenda
       }
 
+      console.log('request', request)
+
       this._vendaService.registar(request).subscribe({
         next:(response) =>{
+          console.log('response', response)
          if(response.status){
           this.totalPagar = 0.00;
           this.listaProdutosParaVenda = [];
@@ -151,9 +157,13 @@ export class VendaComponent implements OnInit {
         complete: () =>{
           this.bloquerBotaoRegistar = false;
         },
-        error: (e) => {}
+        error: (e) => {console.log('erro', e)}
       });
     }
+  }
+
+  calcularTotal(quantidade:number, preco:number, desconto:number):number{
+ return (quantidade * preco) - ((quantidade * preco) * desconto)
   }
 
 }

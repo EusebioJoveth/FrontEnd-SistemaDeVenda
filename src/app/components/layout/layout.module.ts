@@ -11,6 +11,7 @@ import { ProdutoComponent } from './pages/produto/produto.component';
 import { ReporteComponent } from './pages/reporte/reporte.component';
 import { ModalUsuarioComponent } from './modals/modal-usuario/modal-usuario.component';
 import { ModalProdutoComponent } from './modals/modal-produto/modal-produto.component';
+import { ModalDetailVendaComponent } from './modals/modal-detail-venda/modal-detail-venda.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ModalProdutoComponent } from './modals/modal-produto/modal-produto.comp
     ReporteComponent,
     ProdutoComponent,
     ModalUsuarioComponent,
-    ModalProdutoComponent
+    ModalProdutoComponent,
+    ModalDetailVendaComponent
   ],
   imports: [
     CommonModule,

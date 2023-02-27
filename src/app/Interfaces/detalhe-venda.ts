@@ -2,7 +2,7 @@ export interface DetalheVenda {
   idProduto: number,
   descricaoProduto:string,
   quantidade:number,
-  preco:string,
+  precoTexto:string,
   desconto?:string
-  total:string
+  totalTexto:string
 }
