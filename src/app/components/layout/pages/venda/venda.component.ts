@@ -102,9 +102,9 @@ export class VendaComponent implements OnInit {
       idProduto: this.produtoSelecionado.idProduto,
       descricaoProduto: this.produtoSelecionado.nome,
       quantidade: _quantidade,
-      precoTexto: String(_preco.toFixed(2)),
+      precoTexto: _preco.toFixed(2),
       desconto: `${_desconto * 100}`,
-      totalTexto: String(_total.toFixed(2))
+      totalTexto: _total.toFixed(2)
     });
 
     this.dadosDetalheVenda = new MatTableDataSource(this.listaProdutosParaVenda);
@@ -125,18 +125,36 @@ export class VendaComponent implements OnInit {
     this.dadosDetalheVenda = new MatTableDataSource(this.listaProdutosParaVenda);
   }
 
+  convertePrecoAndTotal(listaProduto:any){
+    for(let i=0; i<listaProduto.length; i++){
+      listaProduto[i].precoTexto = parseFloat(listaProduto[i].precoTexto);
+      listaProduto[i].totalTexto = parseFloat(listaProduto[i].totalTexto);
+    }
+
+    return listaProduto;
+
+  }
+
+  converteToStringPrecoAndTotal(listaProduto:any){
+    for(let i=0; i<listaProduto.length; i++){
+      listaProduto[i].precoTexto = (listaProduto[i].precoTexto).toString();
+      listaProduto[i].totalTexto = (listaProduto[i].totalTexto).toString();
+    }
+
+    return listaProduto;
+
+  }
+
   registarVenda(){
     if(this.listaProdutosParaVenda.length > 0){
       this.bloquerBotaoRegistar = true;
-      console.log('totalA Pagar', this.totalPagar)
 
       const request: Venda = {
         tipoPagamento: this.tipoPagamentoPorDefeito,
-        totalTexto: String(this.totalPagar.toFixed(2)),
-        detalheVenda: this.listaProdutosParaVenda
+        totalTexto: this.totalPagar.toString(),
+        detalheVenda: this.converteToStringPrecoAndTotal(this.convertePrecoAndTotal(this.listaProdutosParaVenda))
       }
-
-      console.log('request', request)
+      console.log('ListaProduto', request)
 
       this._vendaService.registar(request).subscribe({
         next:(response) =>{

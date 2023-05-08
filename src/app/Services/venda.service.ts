@@ -14,6 +14,7 @@ export class VendaService {
   constructor(private _httpClient: HttpClient) { }
 
   registar(request: Venda):Observable<ResponseApi>{
+    console.log('request', request)
     return this._httpClient.post<ResponseApi>(`${this.urlApi}Criar`, request);
   }
 
