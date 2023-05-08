@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 
-import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
 
 import { ModalMarcaComponent } from '../modals/modal-marca/modal-marca.component';
 import { Marca } from 'src/app/Interfaces/marca';

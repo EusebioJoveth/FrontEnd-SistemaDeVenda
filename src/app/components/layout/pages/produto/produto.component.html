@@ -2,14 +2,14 @@
   <p-breadcrumb [model]="itemsBreadCrumb" [home]="home"></p-breadcrumb>
 </div>
 <mat-card style="margin: 10px 30px 10px 30px">
-  <mat-card-title>
+  <mat-card-title class="m-3">
     <button mat-raised-button color="primary" (click)="novoProduto()">
       <mat-icon mat-list-icon>add</mat-icon> Novo Produto
     </button>
   </mat-card-title>
   <mat-divider></mat-divider>
   <mat-card-content class="dashboard-card-content">
-    <mat-form-field appearance="standard">
+    <mat-form-field class="mt-2 text-input-serch" appearance="fill">
       <mat-label>Pesquisar</mat-label>
       <input matInput (keyup)="aplicarFitroTabela($event)" #input>
     </mat-form-field>

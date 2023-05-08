@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
+import { MatTableDataSource } from '@angular/material/table';
 import { ProdutoService } from 'src/app/Services/produto.service';
 import { VendaService } from 'src/app/Services/venda.service';
 import { UtilidadeService } from 'src/app/Reutilizavel/utilidade.service';
@@ -12,7 +12,7 @@ import { DetalheVenda } from 'src/app/Interfaces/detalhe-venda';
 
 import Swal from 'sweetalert2';
 import { MenuItem } from 'primeng/api';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-venda',

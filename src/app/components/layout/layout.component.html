@@ -1,44 +1,59 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <h1>JT- Sistema Venda</h1>
-
+   <div class="icon-span-container">
+    <span class="title">JT- Sistema Venda</span>
     <button mat-icon-button (click)="sidenav.toggle();">
       <mat-icon>menu</mat-icon>
     </button>
+   </div>
   </mat-toolbar-row>
 </mat-toolbar>
 
 <mat-sidenav-container>
-  <mat-sidenav #sidenav opened="true" mode="side" style="width: 200px;">
+  <mat-sidenav #sidenav opened="true" mode="side">
     <mat-nav-list>
       <mat-list-item routerLink="/pages/dashboard">
-        <mat-icon mat-list-icon>dashboard</mat-icon>
-        <div class="mat-line">DashBoard</div>
+        <div class="icon-span-container">
+          <mat-icon mat-list-icon>dashboard</mat-icon>
+          <span>DashBoard</span>
+        </div>
       </mat-list-item>
-      <mat-list-item routerLink="/pages/usuarios">
-        <mat-icon mat-list-icon>group</mat-icon>
-        <div class="mat-line">Usuários</div>
+      <mat-list-item  routerLink="/pages/usuarios">
+        <div class="icon-span-container">
+          <mat-icon mat-list-icon>group</mat-icon>
+        <span class="mat-line">Usuários</span>
+        </div>
       </mat-list-item>
       <mat-list-item routerLink="/pages/produtos">
-        <mat-icon mat-list-icon>collections_bookmark</mat-icon>
-        <div class="mat-line">Produtos</div>
+        <div class="icon-span-container">
+          <mat-icon mat-list-icon>collections_bookmark</mat-icon>
+        <span class="mat-line">Produtos</span>
+        </div>
       </mat-list-item>
       <mat-list-item routerLink="/pages/vendas">
-        <mat-icon mat-list-icon>currency_exchange</mat-icon>
-        <div class="mat-line">Venda</div>
+        <div class="icon-span-container">
+          <mat-icon mat-list-icon>currency_exchange</mat-icon>
+        <span class="mat-line">Venda</span>
+        </div>
       </mat-list-item>
 
       <mat-list-item routerLink="/pages/historial_venda">
-        <mat-icon mat-list-icon>edit_note</mat-icon>
-        <div class="mat-line">Histórico de Vendas</div>
+        <div class="icon-span-container">
+          <mat-icon mat-list-icon>edit_note</mat-icon>
+        <span class="mat-line">Histórico de Vendas</span>
+        </div>
       </mat-list-item>
       <mat-list-item routerLink="/pages/reportes">
-        <mat-icon mat-list-icon>receipt</mat-icon>
-        <div class="mat-line">Relatórios</div>
+        <div class="icon-span-container">
+          <mat-icon mat-list-icon>receipt</mat-icon>
+        <span class="mat-line">Relatórios</span>
+        </div>
       </mat-list-item>
       <mat-list-item routerLink="/pages/configuracoes">
-        <mat-icon mat-list-icon>settings_applications</mat-icon>
-        <div class="mat-line">Configurações</div>
+        <div class="icon-span-container">
+          <mat-icon mat-list-icon>settings_applications</mat-icon>
+        <span class="mat-line">Configurações</span>
+        </div>
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
