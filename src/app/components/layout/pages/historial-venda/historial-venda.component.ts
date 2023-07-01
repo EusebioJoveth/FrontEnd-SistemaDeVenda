@@ -5,7 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 
 import { MAT_DATE_FORMATS } from '@angular/material/core';
-import * as moment from 'moment';
+import moment from 'moment';
 
 import {ModalDetailVendaComponent } from '../../modals/modal-detail-venda/modal-detail-venda.component';
 import { Venda } from 'src/app/Interfaces/venda';
