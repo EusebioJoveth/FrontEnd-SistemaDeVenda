@@ -3,7 +3,7 @@
 </div>
 
 <mat-card style="margin: 10px 30px 10px 30px;">
-  <mat-card-title>
+  <mat-card-title class="m-3">
     <button mat-raised-button color="primary" (click)="novaCategoria()">
       <mat-icon mat-list-icon>add</mat-icon> Nova Categoria
     </button>
@@ -12,7 +12,7 @@
   <mat-divider></mat-divider>
 
   <mat-card-content class="dashboard-card-content">
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="fill" class="mt-2 text-input-serch">
       <mat-label>Pesquisar</mat-label>
       <input matInput (keyup)="aplicarFiltroTabela($event)" #input>
     </mat-form-field>
