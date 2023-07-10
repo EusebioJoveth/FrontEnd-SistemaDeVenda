@@ -154,11 +154,10 @@ export class VendaComponent implements OnInit {
         totalTexto: this.totalPagar.toString(),
         detalheVenda: this.converteToStringPrecoAndTotal(this.convertePrecoAndTotal(this.listaProdutosParaVenda))
       }
-      console.log('ListaProduto', request)
-
+      
       this._vendaService.registar(request).subscribe({
         next:(response) =>{
-          console.log('response', response)
+         // console.log('response', response)
          if(response.status){
           this.totalPagar = 0.00;
           this.listaProdutosParaVenda = [];
