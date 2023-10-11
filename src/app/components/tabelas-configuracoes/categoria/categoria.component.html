@@ -1,22 +1,21 @@
-<div style="margin: 10px 30px 10px 30px;">
+<div class="toolbar-pages">
   <p-breadcrumb [model]="itemsBreadCrumb" [home]="home"></p-breadcrumb>
 </div>
 
 <mat-card style="margin: 10px 30px 10px 30px;">
-  <mat-card-title class="m-3">
+  <mat-card-title class="m-3 d-flex justify-content-between align-items-center">
     <button mat-raised-button color="primary" (click)="novaCategoria()">
       <mat-icon mat-list-icon>add</mat-icon> Nova Categoria
     </button>
+    <mat-form-field appearance="fill" class="mt-2 text-input-serch">
+      <mat-label>Pesquisar</mat-label>
+      <input matInput (keyup)="aplicarFiltroTabela($event)" #input>
+    </mat-form-field>
   </mat-card-title>
 
   <mat-divider></mat-divider>
 
   <mat-card-content class="dashboard-card-content">
-    <mat-form-field appearance="fill" class="mt-2 text-input-serch">
-      <mat-label>Pesquisar</mat-label>
-      <input matInput (keyup)="aplicarFiltroTabela($event)" #input>
-    </mat-form-field>
-
     <div class="mat-elevation-z2">
 
       <table mat-table [dataSource]="dataListaCategoria">

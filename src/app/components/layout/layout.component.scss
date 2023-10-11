@@ -1,3 +1,23 @@
+.navbar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height:70px;
+  z-index: 5;
+}
+
+.sidenav-container {
+  height: calc(100vh - 0px);
+  width: 100%;
+  padding-top: 62px !important;
+  padding-bottom: 10px !important;
+}
+
+.mat-sidenav{
+  margin-top: 4.5rem;
+}
+
 mat-sidenav{
   width: 250px;
 }
@@ -12,7 +32,7 @@ mat-sidenav{
 }
 
 .material-icons {
-  font-size: 24px;
+  font-size: 18px;
   margin-right: 10px;
 }
 

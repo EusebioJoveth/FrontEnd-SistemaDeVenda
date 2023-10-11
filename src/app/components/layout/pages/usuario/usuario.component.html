@@ -1,19 +1,18 @@
-<div style="margin: 10px 30px 10px 30px;">
+<div class="toolbar-pages">
   <p-breadcrumb [model]="itemsBreadCrumb" [home]="home"></p-breadcrumb>
 </div>
 <mat-card style="margin: 10px 30px 10px 30px">
-  <mat-card-title class="m-3">
+  <mat-card-title class="m-3 d-flex justify-content-between align-items-center">
     <button mat-raised-button color="primary" (click)="novoUsuario()">
       <mat-icon mat-list-icon>add</mat-icon> Novo Utilizador
     </button>
-  </mat-card-title>
-  <mat-divider></mat-divider>
-  <mat-card-content class="dashboard-card-content">
     <mat-form-field class="mt-2 text-input-serch" appearance="fill">
       <mat-label>Pesquisar</mat-label>
       <input matInput (keyup)="aplicarFitroTabela($event)" #input>
     </mat-form-field>
-
+  </mat-card-title>
+  <mat-divider></mat-divider>
+  <mat-card-content class="dashboard-card-content">
     <div class="mat-elevation-z2">
       <table mat-table [dataSource]="dataListaUsuarios">
         <ng-container matColumnDef="foto">

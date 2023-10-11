@@ -2,22 +2,22 @@
 
 <mat-dialog-content>
   <form [formGroup] = "formularioUsuario">
-    <mat-grid-list cols="1" rowHeight="90px">
-      <mat-grid-tile>
-        <mat-form-field appearance="outline">
-          <mat-label>Nome</mat-label>
-          <input matInput autocomplete="off" formControlName="nome">
-          <mat-icon matSuffix>account_box</mat-icon>
-        </mat-form-field>
-      </mat-grid-tile>
+    <mat-grid-list cols="2" rowHeight="90px">
+          <mat-grid-tile>
+            <mat-form-field appearance="outline">
+              <mat-label>Nome</mat-label>
+              <input matInput autocomplete="off" formControlName="nome">
+              <mat-icon matSuffix>account_box</mat-icon>
+            </mat-form-field>
+          </mat-grid-tile>
 
-      <mat-grid-tile>
-        <mat-form-field appearance="outline">
-          <mat-label>Sobrenome</mat-label>
-          <input matInput autocomplete="off" formControlName="sobrenome">
-          <mat-icon matSuffix>account_box</mat-icon>
-        </mat-form-field>
-      </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field appearance="outline">
+              <mat-label>Sobrenome</mat-label>
+              <input matInput autocomplete="off" formControlName="sobrenome">
+              <mat-icon matSuffix>account_box</mat-icon>
+            </mat-form-field>
+          </mat-grid-tile>
 
       <mat-grid-tile>
         <mat-form-field appearance="outline">
