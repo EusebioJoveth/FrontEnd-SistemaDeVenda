@@ -5,6 +5,7 @@
   width: 100% !important;
   height:70px;
   z-index: 5;
+  background-color: rgb(80, 65, 144);
 }
 
 .sidenav-container {
@@ -12,10 +13,13 @@
   width: 100%;
   padding-top: 62px !important;
   padding-bottom: 10px !important;
+  background-color: rgb(247, 247, 247);
 }
 
 .mat-sidenav{
-  margin-top: 4.5rem;
+  margin-top: 4.3rem;
+  background-color: rgb(111, 92, 196);
+
 }
 
 mat-sidenav{
@@ -30,6 +34,11 @@ mat-sidenav{
   display: flex;
   align-items: center;
 }
+
+.title{
+color: white;
+}
+
 
 .material-icons {
   font-size: 18px;

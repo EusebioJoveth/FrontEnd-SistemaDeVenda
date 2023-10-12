@@ -3,15 +3,16 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+
+
 .text-input-serch{
   width: 350px !important;
 }
 
-.toolbar-pages{
- // position: fixed;
-  //top: 0;
-  //left: 0;
-  //width: 100% !important;
-  //z-index: 10;
-  margin: 25px 30px 10px 30px;
+.mdc-list-item__primary-text {
+  color: #ffffff !important;
 }
+
+.mat-mdc-button-touch-target{
+  color: white !important;
+  }
