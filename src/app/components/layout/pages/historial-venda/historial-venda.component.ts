@@ -91,7 +91,7 @@ export class HistorialVendaComponent implements OnInit, AfterViewInit {
   pesquisarVendas(){
     let _dataInicio:string = "";
     let _dataFim: string = "";
-    console.log('DataInicio',this.formPesquisa.value.dataInicio, 'DataFim', this.formPesquisa.value.dataIFim )
+    //console.log('DataInicio',this.formPesquisa.value.dataInicio, 'DataFim', this.formPesquisa.value.dataIFim )
 
     if(this.formPesquisa.value.buscarPor === 'data'){
       _dataInicio = moment(this.formPesquisa.value.dataInicio).format('DD/MM/YYYY');
@@ -110,7 +110,7 @@ export class HistorialVendaComponent implements OnInit, AfterViewInit {
       _dataFim
     ).subscribe({
       next: (data) =>{
-
+        //console.log(data)
         if(data.status)
         this.dadosListaVenda = data.valor;
         else

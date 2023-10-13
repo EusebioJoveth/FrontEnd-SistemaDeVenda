@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+
+  itemsBreadCrumb: MenuItem[];
+  home: MenuItem;
+
+  constructor() {
+    this.itemsBreadCrumb = [
+      {label: 'Páginas'},
+      {label: 'Dashboard'},
+  ];
+  this.home = {icon: 'pi pi-chart-bar', routerLink: '/pages/produtos'};
+   }
 
   ngOnInit(): void {
   }

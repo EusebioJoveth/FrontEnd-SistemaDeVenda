@@ -1,11 +1,21 @@
-<div style="margin: 10px 30px 10px 30px;">
-  <p-breadcrumb [model]="itemsBreadCrumb" [home]="home"></p-breadcrumb>
+<div class="container-fluid position-absolute overflow-hidden">
+  <div class="col-md-12">
+    <div class="toolbar-pages">
+      <p-breadcrumb [model]="itemsBreadCrumb" [home]="home"></p-breadcrumb>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <mat-card class="mat-card-config mat-setion">
+      <div class="first-linha">
+        <a routerLink="/pages/configuracoes/categoria">Categoria</a>
+        <a routerLink="/pages/configuracoes/marca">Marca</a>
+        <a routerLink="/pages/configuracoes/imposto">Imposto</a>
+      </div>
+    </mat-card>
+  </div>
 </div>
 
-<mat-card class="mat-card-config">
-  <div class="first-linha">
-    <a routerLink="/pages/configuracoes/categoria">Categoria</a>
-    <a routerLink="/pages/configuracoes/marca">Marca</a>
-    <a routerLink="/pages/configuracoes/imposto">Imposto</a>
-  </div>
-</mat-card>
+
+
+

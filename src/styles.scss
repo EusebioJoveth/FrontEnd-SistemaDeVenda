@@ -3,7 +3,16 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.toolbar-pages{
+  margin-top: 10px;
+  height: 60px;
+  //border: solid 2px red;
 
+}
+.mat-setion{
+  margin: 14px 0px 10px 0px;
+
+}
 
 .text-input-serch{
   width: 350px !important;

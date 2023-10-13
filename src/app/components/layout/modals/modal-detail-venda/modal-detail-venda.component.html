@@ -42,7 +42,7 @@
     <h4>Lista de Produtos</h4>
 
     <table mat-table [dataSource]="detalheVenda" class="mat-elevation-z2">
-
+      <caption></caption>
       <ng-container matColumnDef="produto">
         <th mat-header-cell *matHeaderCellDef>Produto</th>
         <td mat-cell *matCellDef="let element">{{element.descricaoProduto}}</td>
