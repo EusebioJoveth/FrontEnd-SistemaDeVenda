@@ -24,10 +24,27 @@
 
 mat-sidenav{
   width: 250px;
+
+}
+mat-icon{
+  color: white;
+}
+
+.mat-line{
+  color: white;
 }
 
 .title{
   font-size: 24px;
+  color: #FF6D00;
+  font-weight: 700;
+}
+
+.avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 15%;
+  cursor: pointer;
 }
 
 .icon-span-container {
@@ -35,13 +52,10 @@ mat-sidenav{
   align-items: center;
 }
 
-.title{
-color: white;
-}
-
-
 .material-icons {
   font-size: 18px;
   margin-right: 10px;
 }
+
+
 

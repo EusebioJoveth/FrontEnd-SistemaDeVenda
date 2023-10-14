@@ -1,10 +1,29 @@
 <mat-toolbar class="navbar">
-  <mat-toolbar-row>
+  <mat-toolbar-row class="d-flex justify-content-between align-items-center ">
    <div class="icon-span-container">
-    <span class="title">JT- Sistema Venda</span>
+    <span class="title">CompraAQUI</span>
     <button mat-icon-button (click)="sidenav.toggle();">
-      <mat-icon>menu</mat-icon>
+      <mat-icon style="color: white;">menu</mat-icon>
     </button>
+   </div>
+   <div class="user-prifile">
+
+      <div *ngIf="userDados" [matMenuTriggerFor]="menu">
+
+        <div *ngIf="userDados?.photoURL; else showDefaultUserLoggedTop">
+          <img class="avatar " [src]="userDados.photoURL" alt=""
+            onerror="this.src='assets/images/user.png';">
+        </div>
+        <ng-template #showDefaultUserLoggedTop>
+          <img class="avatar " [src]="imgDefault" alt="">
+        </ng-template>
+      </div>
+
+      <mat-menu #menu>
+        <button  mat-menu-item (click)="openProfileDialog();">Perfil</button>
+        <button  mat-menu-item (click)="logout()">Sair</button>
+      </mat-menu>
+
    </div>
   </mat-toolbar-row>
 </mat-toolbar>
@@ -15,7 +34,7 @@
       <mat-list-item routerLink="/pages/dashboard">
         <div class="icon-span-container">
           <mat-icon mat-list-icon>dashboard</mat-icon>
-          <span>DashBoard</span>
+          <span class="mat-line">DashBoard</span>
         </div>
       </mat-list-item>
       <mat-list-item  routerLink="/pages/usuarios">

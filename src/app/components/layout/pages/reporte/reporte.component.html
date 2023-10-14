@@ -12,7 +12,7 @@
           <div class="col-md-12">
             <form [formGroup]="formularioFiltro" (ngSubmit)="pesquisarVendas()">
 
-              <div class="campos-formulario">
+              <div class="d-flex justify-content-start align-self-center">
                 <mat-form-field appearance="fill">
                   <mat-label>Data Início</mat-label>
                   <input matInput autocomplte="off" formControlName="dataInicio"
@@ -28,7 +28,7 @@
                   <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                   <mat-datepicker #picker2></mat-datepicker>
                 </mat-form-field>
-                <button mat-raised-button color="primary"
+                <button mat-fab  extended color="primary"
                 [disabled]="formularioFiltro.invalid" type="submit" class="botao-pesquisar">
                 <mat-icon>search</mat-icon>Pesquisar
               </button>
@@ -37,7 +37,7 @@
           </div>
 
           <div class="col-md-12">
-            <button mat-raised-button color="warn"
+            <button mat-raised-button color="success"
             [disabled]="listaVendaReporte.length < 1"
             (click)="exportarDadosParaExcel()">
             <mat-icon>feed</mat-icon>Exportar Excel
@@ -45,7 +45,7 @@
           </div>
 
           <div class="col-md-12">
-            <div class="mat-elevation-z2">
+            <div class="mat-elevation-z2" style="margin-top: 10px;">
               <table mat-table [dataSource]="dadosVendaReporte">
                 <caption></caption>
                 <ng-container matColumnDef="dataRegisto">

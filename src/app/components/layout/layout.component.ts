@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
+  userDados:any = {};
+  imgDefault = "assets/images/user.png";
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  logout(){
+
+  }
+
+  openProfileDialog(){
+
   }
 
 }

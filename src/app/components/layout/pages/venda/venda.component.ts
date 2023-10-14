@@ -126,20 +126,20 @@ export class VendaComponent implements OnInit {
   }
 
   convertePrecoAndTotal(listaProduto:any){
-    for(let i=0; i<listaProduto.length; i++){
-      listaProduto[i].precoTexto = parseFloat(listaProduto[i].precoTexto);
-      listaProduto[i].totalTexto = parseFloat(listaProduto[i].totalTexto);
-    }
+    listaProduto.forEach((produto:any) => {
+      produto.precoTexto = parseFloat(produto.precoTexto);
+      produto.totalTexto = parseFloat(produto.totalTexto);
+  });
 
     return listaProduto;
 
   }
 
   converteToStringPrecoAndTotal(listaProduto:any){
-    for(let i=0; i<listaProduto.length; i++){
-      listaProduto[i].precoTexto = (listaProduto[i].precoTexto).toString();
-      listaProduto[i].totalTexto = (listaProduto[i].totalTexto).toString();
-    }
+    for (const produto of listaProduto) {
+      produto.precoTexto = String(produto.precoTexto) as string;
+      produto.totalTexto = String(produto.totalTexto) as string;
+  }
 
     return listaProduto;
 
@@ -154,7 +154,7 @@ export class VendaComponent implements OnInit {
         totalTexto: this.totalPagar.toString(),
         detalheVenda: this.converteToStringPrecoAndTotal(this.convertePrecoAndTotal(this.listaProdutosParaVenda))
       }
-      
+
       this._vendaService.registar(request).subscribe({
         next:(response) =>{
          // console.log('response', response)
