@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
       next: (data) =>{
         if(data.status){
           this._utilidadeService.guardarSessaoUsuario(data.valor);
-          this.router.navigate(["pages"])
+          this.router.navigate(["pages/dashboard"])
         }else
         this._utilidadeService.mostrarAlerta("Email ou Senha Errado", "Opps!");
       },

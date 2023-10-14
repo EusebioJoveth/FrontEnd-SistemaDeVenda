@@ -20,7 +20,9 @@
       </div>
 
       <mat-menu #menu>
-        <button  mat-menu-item (click)="openProfileDialog();">Perfil</button>
+        <button  mat-menu-item (click)="openProfileDialog();">
+          Perfil: <span style="color: #47700f; font-weight: 700;" >{{rolUser}}</span>
+        </button>
         <button  mat-menu-item (click)="logout()">Sair</button>
       </mat-menu>
 
@@ -31,6 +33,7 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav class="mat-sidenav" #sidenav opened="true" mode="side">
     <mat-nav-list>
+      <!--
       <mat-list-item routerLink="/pages/dashboard">
         <div class="icon-span-container">
           <mat-icon mat-list-icon>dashboard</mat-icon>
@@ -72,6 +75,13 @@
         <div class="icon-span-container">
           <mat-icon mat-list-icon>settings_applications</mat-icon>
         <span class="mat-line">Configurações</span>
+        </div>
+      </mat-list-item>
+    -->
+      <mat-list-item *ngFor="let menu of listaMenus" [routerLink]="menu?.url">
+        <div class="icon-span-container">
+          <mat-icon mat-list-icon>{{menu?.icone}}</mat-icon>
+        <span class="mat-line">{{menu?.nome}}</span>
         </div>
       </mat-list-item>
     </mat-nav-list>
