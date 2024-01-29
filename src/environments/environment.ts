@@ -1,10 +1,11 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+//https://www.apisitemadevenda.somee.com/swagger/index.html
 
 export const environment = {
   production: false,
-  endpoint: "http://localhost:5290/api/"
+  endpoint: "https://www.apisitemadevenda.somee.com/api/"
 };
 
 /*

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import {MenuItem} from 'primeng/api';
+import { UtilidadeService } from 'src/app/Reutilizavel/utilidade.service';
 import { NavegacaoService } from 'src/app/Services/navegacao.service';
 import { UsuarioService } from 'src/app/Services/usuario.service';
 
@@ -15,7 +16,7 @@ export class TabelasConfiguracoesComponent implements OnInit {
   home: MenuItem;
   usuarioLogado:any;
 
-  constructor(private _usuarioServico:UsuarioService, private _navigateService:NavegacaoService) {
+  constructor(private _utilidadeService:UtilidadeService, private _navigateService:NavegacaoService) {
     this.itemsBreadCrumb = [
       {label: 'Páginas'},
       {label: 'Configurações'},
@@ -25,7 +26,7 @@ export class TabelasConfiguracoesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.usuarioLogado = this._usuarioServico.obterDadosDoUserLogado();
+    this.usuarioLogado = this._utilidadeService.obterSessaoUsuario();
   }
 
   navigateToMenu(rotaName:string){

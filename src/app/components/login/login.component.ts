@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
 
     this._usuarioService.iniciarSesao(request).subscribe({
       next: (data) =>{
+        console.log('data',data)
         if(data.status){
           this._utilidadeService.guardarSessaoUsuario(data.valor);
           this.router.navigate(["pages/dashboard"])

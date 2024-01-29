@@ -20,11 +20,6 @@ export class UsuarioService {
     return this._httpClient.post<ResponseApi>(`${this.urlApi}IniciarSesao`, request);
   }
 
-  obterDadosDoUserLogado(){
-    const user =  JSON.parse(localStorage.getItem('usuario')!);
-    return user
-  }
-
   lista():Observable<ResponseApi>{
     return this._httpClient.get<ResponseApi>(`${this.urlApi}Lista`)
   }
