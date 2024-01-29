@@ -7,11 +7,24 @@
 
   <div class="col-md-12">
     <mat-card class="mat-card-config mat-setion">
-      <div class="first-linha">
-        <a routerLink="/pages/configuracoes/categoria">Categoria</a>
-        <a routerLink="/pages/configuracoes/marca">Marca</a>
-        <a routerLink="/pages/configuracoes/imposto">Imposto</a>
+     <div class="row">
+      <div class="col-md-9">
+        <div class="row"><div class="col-md-12 ml-3 mt-3">Definições das Sistema</div></div>
+        <div class="first-linha">
+          <button mat-raised-button (click)="navigateToMenu('categoria')">Categoria</button>
+          <button mat-raised-button (click)="navigateToMenu('marca')">Marca</button>
+          <button mat-raised-button (click)="navigateToMenu('imposto')">Imposto</button>
+
+        </div>
       </div>
+
+      <div *ngIf="this.usuarioLogado.idRol == 4" class="col-3 mt-3">
+        <div class="row">Regras de Negócios </div>
+        <div class="first-linha">
+          <button mat-raised-button (click)="navigateToMenu('menus')">Menu</button>
+        </div>
+      </div>
+     </div>
     </mat-card>
   </div>
 </div>

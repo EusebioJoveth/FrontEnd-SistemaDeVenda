@@ -33,52 +33,8 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav class="mat-sidenav" #sidenav opened="true" mode="side">
     <mat-nav-list>
-      <!--
-      <mat-list-item routerLink="/pages/dashboard">
-        <div class="icon-span-container">
-          <mat-icon mat-list-icon>dashboard</mat-icon>
-          <span class="mat-line">DashBoard</span>
-        </div>
-      </mat-list-item>
-      <mat-list-item  routerLink="/pages/usuarios">
-        <div class="icon-span-container">
-          <mat-icon mat-list-icon>group</mat-icon>
-        <span class="mat-line">Usuários</span>
-        </div>
-      </mat-list-item>
-      <mat-list-item routerLink="/pages/produtos">
-        <div class="icon-span-container">
-          <mat-icon mat-list-icon>collections_bookmark</mat-icon>
-        <span class="mat-line">Produtos</span>
-        </div>
-      </mat-list-item>
-      <mat-list-item routerLink="/pages/vendas">
-        <div class="icon-span-container">
-          <mat-icon mat-list-icon>currency_exchange</mat-icon>
-        <span class="mat-line">Venda</span>
-        </div>
-      </mat-list-item>
-
-      <mat-list-item routerLink="/pages/historial_venda">
-        <div class="icon-span-container">
-          <mat-icon mat-list-icon>edit_note</mat-icon>
-        <span class="mat-line">Histórico de Vendas</span>
-        </div>
-      </mat-list-item>
-      <mat-list-item routerLink="/pages/reportes">
-        <div class="icon-span-container">
-          <mat-icon mat-list-icon>receipt</mat-icon>
-        <span class="mat-line">Relatórios</span>
-        </div>
-      </mat-list-item>
-      <mat-list-item routerLink="/pages/configuracoes">
-        <div class="icon-span-container">
-          <mat-icon mat-list-icon>settings_applications</mat-icon>
-        <span class="mat-line">Configurações</span>
-        </div>
-      </mat-list-item>
-    -->
-      <mat-list-item *ngFor="let menu of listaMenus" [routerLink]="menu?.url">
+      <!--<mat-list-item *ngFor="let menu of listaMenus" [routerLink]="menu?.url">-->
+        <mat-list-item *ngFor="let menu of listaMenus" (click)="navigateToPage(menu?.url)">
         <div class="icon-span-container">
           <mat-icon mat-list-icon>{{menu?.icone}}</mat-icon>
         <span class="mat-line">{{menu?.nome}}</span>

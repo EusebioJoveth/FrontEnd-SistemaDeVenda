@@ -10,6 +10,8 @@ import { SharedModule } from 'src/app/Reutilizavel/shared/shared.module';
 import { ModalCategoriaComponent } from './modals/modal-categoria/modal-categoria.component';
 import { ModalMarcaComponent } from './modals/modal-marca/modal-marca.component';
 import { ModalImpostoComponent } from './modals/modal-imposto/modal-imposto.component';
+import { MenuComponent } from './menu/menu.component';
+import { ModalMenuComponent } from './modals/modal-menu/modal-menu.component';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { ModalImpostoComponent } from './modals/modal-imposto/modal-imposto.comp
     ModalCategoriaComponent,
     ModalMarcaComponent,
     ModalImpostoComponent,
+    MenuComponent,
+    ModalMenuComponent,
   ],
   imports: [
     CommonModule,

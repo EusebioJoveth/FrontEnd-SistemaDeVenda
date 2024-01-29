@@ -8,7 +8,6 @@ import { SharedModule } from './Reutilizavel/shared/shared.module';
 import { LoginComponent } from './components/login/login.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-
 @NgModule({
   declarations: [
     AppComponent,
